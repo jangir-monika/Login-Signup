@@ -1,0 +1,145 @@
+// -------------------------------
+// OPEN & CLOSE MODAL
+// -------------------------------
+function openModal() {
+  document.querySelector('.overlay').classList.add('show');
+}
+
+function closeModal() {
+  document.querySelector('.overlay').classList.remove('show');
+}
+
+
+// -------------------------------
+// SWITCH LOGIN / SIGNUP FORM
+// -------------------------------
+function switchForm(type) {
+  const loginBtn = document.getElementById('btnLogin');
+  const signupBtn = document.getElementById('btnSignup');
+  const loginForm = document.getElementById('loginForm');
+
+  // Check if signup form exists, otherwise create it
+  let signupForm = document.getElementById('signupForm');
+  if (!signupForm) {
+    createSignupForm();
+    signupForm = document.getElementById('signupForm');
+  }
+
+  if (type === 'login') {
+    loginBtn.classList.add('active');
+    signupBtn.classList.remove('active');
+
+    loginForm.style.display = "flex";
+    signupForm.style.display = "none";
+
+    document.getElementById('authTitle').innerText = "Welcome Back";
+  } 
+  else {
+    signupBtn.classList.add('active');
+    loginBtn.classList.remove('active');
+
+    signupForm.style.display = "flex";
+    loginForm.style.display = "none";
+
+    document.getElementById('authTitle').innerText = "Create Account";
+  }
+}
+
+
+// -------------------------------
+// CREATE SIGNUP FORM DYNAMICALLY
+// -------------------------------
+function createSignupForm() {
+  const card = document.getElementById("authCard");
+
+  const form = document.createElement("form");
+  form.id = "signupForm";
+  form.style.display = "none";
+  form.classList.add("authForm");
+
+  form.innerHTML = `
+    <div class="field">
+      <div class="icon">
+        <svg width="18" height="18" viewBox="0 0 24 24">
+          <path d="M12 12a5 5 0 100-10 5 5 0 000 10zM3 22a9 9 0 0118 0"
+           stroke="currentColor" stroke-width="1.2" fill="none"/>
+        </svg>
+      </div>
+      <input id="signupName" type="text" placeholder=" " required />
+      <label for="signupName">Full Name</label>
+    </div>
+
+    <div class="field">
+      <div class="icon">
+        <svg width="18" height="18" viewBox="0 0 24 24">
+          <path d="M3 11h18v8a2 2 0 01-2 2H5a2 2 0 01-2-2v-8zM7 11V8a5 5 0 0110 0v3"
+           stroke="currentColor" stroke-width="1.2" fill="none"/>
+        </svg>
+      </div>
+      <input id="signupEmail" type="email" placeholder=" " required />
+      <label for="signupEmail">Email</label>
+    </div>
+
+    <div class="field">
+      <div class="icon">
+        <svg width="18" height="18" viewBox="0 0 24 24">
+          <path d="M3 11h18v8a2 2 0 01-2 2H5a2 2 0 01-2-2v-8zM7 11V8a5 5 0 0110 0v3"
+           stroke="currentColor" stroke-width="1.2" fill="none"/>
+        </svg>
+      </div>
+      <input id="signupPwd" type="password" placeholder=" " required />
+      <label for="signupPwd">Password</label>
+      <button type="button" class="pwd-toggle" onclick="togglePwd('signupPwd', this)">Show</button>
+    </div>
+
+    <button class="btn" type="submit">Signup</button>
+  `;
+
+  card.appendChild(form);
+}
+
+
+// -------------------------------
+// PASSWORD SHOW / HIDE
+// -------------------------------
+function togglePwd(id, btn) {
+  const field = document.getElementById(id);
+
+  if (field.type === "password") {
+    field.type = "text";
+    btn.innerText = "Hide";
+  } else {
+    field.type = "password";
+    btn.innerText = "Show";
+  }
+}
+
+
+// -------------------------------
+// LOGIN VALIDATION
+// -------------------------------
+function handleLogin(e) {
+  e.preventDefault();
+
+  const email = document.getElementById('loginEmail').value.trim();
+  const pwd   = document.getElementById('loginPwd').value.trim();
+  const alertBox = document.getElementById('alertBox');
+
+  if (email === "" || pwd === "") {
+    alertBox.innerText = "Please fill all fields";
+    alertBox.style.display = "block";
+    return false;
+  }
+
+  alertBox.style.display = "none";
+  alert("Logged in successfully!");
+  return false;
+}
+
+
+// -------------------------------
+// SOCIAL LOGIN (DEMO)
+// -------------------------------
+function social(type) {
+  alert("Redirecting to " + type + " login…");
+}
