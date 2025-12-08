@@ -1,63 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login & Signup</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | Signup</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
 <div class="container">
-    <div class="form-box" id="formBox">
+    <div class="glass-card">
+
+        <div class="tabs">
+            <button class="tab active" id="loginTab">Login</button>
+            <button class="tab" id="signupTab">Signup</button>
+        </div>
 
         <!-- LOGIN FORM -->
-        <form id="loginForm" class="form active">
-            <h2 class="title">Login</h2>
+        <form class="form active" id="loginForm">
+            <h2>Welcome Back</h2>
 
             <div class="input-box">
-                <input type="text" required>
+                <input type="text" required />
                 <label>Username</label>
             </div>
 
             <div class="input-box">
-                <input type="password" required>
+                <input type="password" required />
                 <label>Password</label>
             </div>
 
-            <button type="submit" class="btn">Login</button>
+            <button class="btn">Login</button>
 
-            <p class="toggle-text">
-                Don’t have an account?
-                <span onclick="showSignup()">Signup</span>
-            </p>
+            <p class="switch">Don't have an account? <span id="goSignup">Signup</span></p>
         </form>
 
         <!-- SIGNUP FORM -->
-        <form id="signupForm" class="form">
-            <h2 class="title">Signup</h2>
+        <form class="form" id="signupForm">
+            <h2>Create Account</h2>
 
             <div class="input-box">
-                <input type="text" required>
-                <label>Create Username</label>
+                <input type="text" required />
+                <label>Username</label>
             </div>
 
             <div class="input-box">
-                <input type="password" required>
-                <label>Create Password</label>
+                <input type="email" required />
+                <label>Email</label>
             </div>
 
             <div class="input-box">
-                <input type="password" required>
-                <label>Confirm Password</label>
+                <input type="password" required />
+                <label>Password</label>
             </div>
 
-            <button type="submit" class="btn">Signup</button>
+            <button class="btn">Signup</button>
 
-            <p class="toggle-text">
-                Already have an account?
-                <span onclick="showLogin()">Login</span>
-            </p>
+            <p class="switch">Already have an account? <span id="goLogin">Login</span></p>
         </form>
 
     </div>
